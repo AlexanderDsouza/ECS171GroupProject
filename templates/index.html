@@ -1,23 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Predictor</title>
+    <title>Pokemon Prediction</title>
 </head>
 <body>
-    <h1>Welcome to the Pokemon Predictor</h1>
-    <form action="/predict" method="post">
-        <!-- Add a dropdown list for Pokemon selection -->
-        <label for="pokemon">Select a Pokemon:</label>
-        <select name="pokemon" required>
-            <option value="bulbasaur">Bulbasaur</option>
-            <option value="charmander">Charmander</option>
-            <option value="squirtle">Squirtle</option>
-            <!-- Add more Pokemon options as needed -->
+    <h1>Select a Pokemon</h1>
+
+    <form method="post" action="/predict">
+        <label for="pokemon">Choose a Pokemon:</label>
+        <select name="pokemon" id="pokemon" onchange="updateImage()">
+            {% for pokemon in pokemon_list %}
+                <option value="{{ pokemon }}" data-image="{{ pokemon_dict[pokemon]['image_path'] }}">{{ pokemon }}</option>
+            {% endfor %}
         </select>
+
         <br>
-        <input type="submit" value="Predict">
+        <img id="pokemonImage" src="" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
+
+        <br>
+        <button type="submit">Predict</button>
     </form>
+
+    <script>
+        function updateImage() {
+            var selectedPokemon = document.getElementById("pokemon");
+            var selectedImage = selectedPokemon.options[selectedPokemon.selectedIndex].getAttribute('data-image');
+            var imageUrl = "{{ url_for('serve_image', image_path='') }}" + selectedImage;
+            console.log("Image URL:", imageUrl);
+            document.getElementById("pokemonImage").src = imageUrl;
+        }
+    </script>
 </body>
 </html>
