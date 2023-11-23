@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Predictor</title>
+</head>
+<body>
+    <h1>Welcome to the Pokemon Predictor</h1>
+    <form action="/predict" method="post">
+        <!-- Add a dropdown list for Pokemon selection -->
+        <label for="pokemon">Select a Pokemon:</label>
+        <select name="pokemon" required>
+            <option value="bulbasaur">Bulbasaur</option>
+            <option value="charmander">Charmander</option>
+            <option value="squirtle">Squirtle</option>
+            <!-- Add more Pokemon options as needed -->
+        </select>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
