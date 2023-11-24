@@ -30,3 +30,5 @@ def serve_image(image_path):
     return send_from_directory('static', image_path)
 
 if __name__ == '__main__':
+    app.run(debug=True)
+
