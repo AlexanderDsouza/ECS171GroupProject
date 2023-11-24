@@ -7,8 +7,8 @@ app = Flask(__name__, static_url_path='/static')
 try:
     df = pd.read_csv('pokemons.csv')
     pokemon_list = list(df['name'])
-    image_folder = 'static/Pokemon Dataset'
-    pokemon_dict = dict(zip(df['name'], [{'total': total, 'image_path': f"Pokemon Dataset/{name.lower()}.png"} for name, total in zip(df['name'], df['total'])]))
+    image_folder = 'static/'
+    pokemon_dict = dict(zip(df['name'], [{'total': total, 'image_path': f"/{name.lower()}.png"} for name, total in zip(df['name'], df['total'])]))
 except FileNotFoundError:
     print("Error: The 'pokemons.csv' file was not found.")
 except pd.errors.EmptyDataError:
@@ -25,7 +25,7 @@ def predict():
     return render_template('result.html', pokemon=selected_pokemon, **pokemon_attributes_values)
 
 # Add a route to serve static images
-@app.route('/static/Pokemon Dataset/<path:image_path>')
+@app.route('/static/<path:image_path>')
 def serve_image(image_path):
     return send_from_directory('static', image_path)
 
