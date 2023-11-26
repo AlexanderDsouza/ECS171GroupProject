@@ -1,4 +1,7 @@
 
+
+<img id="pokemonImage" src="{{ url_for('serve_image', image_path=pokemon_dict[pokemon_list[0]]['image_path']) }}" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,6 @@
         </select>
 
         <br>
-        <img id="pokemonImage" src="" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
 
         <br>
         <button type="submit">Predict</button>
@@ -35,3 +37,4 @@
     </script>
 </body>
 </html>
+
