@@ -118,7 +118,8 @@ y_pred = svm_cls.predict(X_test_rescaled)
 
 # Evaluate the SVM model
 print("SVM Classification Report:")
-print(classification_report(y_test, y_pred))
+report = classification_report(y_test, y_pred)
+print(report)
 
 
 #creating model
@@ -132,6 +133,10 @@ def home():
 def predict():
     selected_pokemon = request.form['pokemon']
     selected_pokemon_row = df[df['name'] == selected_pokemon]
+    print("rowwww: ",selected_pokemon_row)
+    # idd = selected_pokemon_row['id'][1]
+    # print("ughhhhhhh:" , selected_pokemon_row['id'][1])
+    # print("type: ", type(idd))
 
     selected_pokemon_row = selected_pokemon_row.drop(columns=['id','name', 'rank','evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
 

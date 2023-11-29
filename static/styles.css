@@ -1,0 +1,12 @@
+.body {
+    text-align: center;
+    margin: 50px;
+}
+.font {
+    font-family: 'Pokemon Solid', sans-serif;
+}
+
+#pokemon {
+    text-transform: capitalize;
+}
+
