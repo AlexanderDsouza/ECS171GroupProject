@@ -10,12 +10,13 @@
     <title>Pokemon Prediction</title>
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
 </head>
 <body class="body">
     <h1 class="font">Is your Pokémon legendary?</h1>
 
     <form method="post" action="/predict">
-        <label for="pokemon">Choose a Pokémon:</label>
+        <label class="body-font" for="pokemon">Choose a Pokémon:</label>
         <select name="pokemon" id="pokemon" onchange="updateImage()">
             {% for pokemon in pokemon_names %}
                 <option value="{{ pokemon }}" data-image="{{ pokemon_dict[pokemon]['image_path'] }}">{{ pokemon }}</option>
@@ -23,7 +24,7 @@
         </select>
         <br>
         <br>
-        <button type="submit">Predict</button>
+        <button class="body-font" type="submit">Predict</button>
     </form>
 
     <script>

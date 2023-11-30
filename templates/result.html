@@ -7,14 +7,15 @@
     <title>Pokemon Prediction Result</title>
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
 </head>
 
 <body class="body">
     <h1 class="font">Pokemon Prediction Result</h1>
-    <p id="pokemon" name="pokemon">Pokemon: {{ pokemon }}</p>
-    <p>Prediction: {% if prediction == 'legendary' %} Legendary {% else %} Ordinary {% endif %}</p>
+    <p class="body-font" id="pokemon" name="pokemon">Pokemon: {{ pokemon }}</p>
+    <p class="body-font">Prediction: {% if prediction == 'legendary' %} Legendary {% else %} Ordinary {% endif %}</p>
     <!-- Add other information as needed -->
     <br>
-    <a href="/">Predict another Pokémon</a>
+    <a href="/" class="body-font">Predict another Pokémon</a>
 </body>
 </html>

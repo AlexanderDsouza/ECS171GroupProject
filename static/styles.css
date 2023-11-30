@@ -1,7 +1,12 @@
 .body {
     text-align: center;
-    margin: 50px;
+    margin: 20px;
 }
+
+.body-font {
+    font-family: "Rubik", sans-serif;
+}
+
 .font {
     font-family: 'Pokemon Solid', sans-serif;
 }
@@ -9,4 +14,29 @@
 #pokemon {
     text-transform: capitalize;
 }
+
+a {
+    background-color: #003a70;
+    box-shadow: 0 5px 0 #3d7dca;
+    color: #ffcb05;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    margin: 10px 0px 0px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+button {
+    background-color: #003a70;
+    box-shadow: 0 5px 0 #3d7dca;
+    color: #ffcb05;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    margin: 10px 0px 0px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+  
 
