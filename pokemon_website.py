@@ -15,28 +15,26 @@ app = Flask(__name__, static_url_path='/static')
 
 
 try:
-    df = pd.read_csv('pokemons.csv')
-    pokemon_list = list(df['name'])
-    image_folder = 'static/'
-    pokemon_data = df.copy().drop(columns=['id','rank','evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
-    pokemon_dict = dict(zip(df['name'], [{'total': total, 'image_path': f"/{name.lower()}.png"} for name, total in zip(df['name'], df['total'])]))
- 
+    pokemon_dataframe = pd.read_csv('pokemons.csv') #has all pokemon from csv file with every attribute
+    pokemon_names = list(pokemon_dataframe['name']) #list of all pokemon names 
+    temp_pokemon_dict = dict(zip(pokemon_dataframe['name'], [{'image_path': f"/{name.lower()}.png"} for name in pokemon_dataframe['name']])) #has a pokemon name and png file name
+    pokemon_dict = pd.DataFrame(temp_pokemon_dict) 
+
 except FileNotFoundError:
     print("Error: The 'pokemons.csv' file was not found.")
 except pd.errors.EmptyDataError:
     print("Error: The 'pokemons.csv' file is empty.")
 
 
+#====================================================================
+#creating test data
 
-model_data = df.copy().drop(columns=['id','name', 'evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
+model_data = pokemon_dataframe.copy().drop(columns=['id','name', 'evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
 model_dataframe = pd.DataFrame(model_data)
     ## replace all mythical pokemon rank with lengendary rank
 model_dataframe = model_dataframe.replace("mythical", "legendary")
 model_dataframe = model_dataframe.replace("baby", "ordinary")
 
-
-#====================================================================
-#creating test data
 big_pokemon_data = []
 max_stat_value = 63
 
@@ -126,12 +124,21 @@ print(classification_report(y_test, y_pred))
 
 @app.route('/')
 def home():
-    return render_template('index.html', pokemon_list=pokemon_list, pokemon_dict=pokemon_dict)
+    return render_template('index.html', pokemon_names=pokemon_names, pokemon_dict=pokemon_dict)
 
 @app.route('/predict', methods=['POST'])
 def predict():
     selected_pokemon = request.form['pokemon']
+<<<<<<< Updated upstream
     selected_pokemon_row = df[df['name'] == selected_pokemon]
+=======
+    selected_pokemon_row = pokemon_dataframe[pokemon_dataframe['name'] == selected_pokemon]
+
+   
+    index = pokemon_dataframe[pokemon_dataframe['name'] == selected_pokemon].index[0]
+    print(f"The index of {selected_pokemon} is: {index}")
+
+>>>>>>> Stashed changes
 
     selected_pokemon_row = selected_pokemon_row.drop(columns=['id','name', 'rank','evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
 
@@ -144,8 +151,8 @@ def predict():
 
 
     # Update the result HTML template with the prediction
-    return render_template('result.html', pokemon=selected_pokemon, prediction=prediction)
-
+    return render_template('result.html', prediction=prediction,pokemon_names=pokemon_names, pokemon_dict=pokemon_dict,index = index )
+    #pokemon_names has all names, pokemon_dict has names, and image path, index is index needed
 
 # Add a route to serve static images
 @app.route('/static/<path:image_path>')

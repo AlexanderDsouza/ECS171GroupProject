@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+<img id="pokemonImage" src="{{ url_for('serve_image', image_path=pokemon_dict[pokemon_names[index]]['image_path']) }}" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Prediction Result</title>
 </head>
+<<<<<<< Updated upstream
 <body>
     <h1>Pokemon Prediction Result</h1>
     <p>Pokemon: {{ pokemon }}</p>
+=======
+
+<body class="body">
+    <h1 class="font">Pokemon Prediction Result</h1>
+    <p id="pokemon">Pokemon: {{ pokemon }}</p>
+>>>>>>> Stashed changes
     <p>Prediction: {% if prediction == 'legendary' %} Legendary {% else %} Ordinary {% endif %}</p>
     <!-- Add other information as needed -->
     <br>

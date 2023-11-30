@@ -1,6 +1,6 @@
 
 
-<img id="pokemonImage" src="{{ url_for('serve_image', image_path=pokemon_dict[pokemon_list[0]]['image_path']) }}" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
+<img id="pokemonImage" src="{{ url_for('serve_image', image_path=pokemon_dict[pokemon_names[0]]['image_path']) }}" alt="Selected Pokemon Image" style="max-width: 475px; max-height: 475px;">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
     <form method="post" action="/predict">
         <label for="pokemon">Choose a Pokemon:</label>
         <select name="pokemon" id="pokemon" onchange="updateImage()">
-            {% for pokemon in pokemon_list %}
+            {% for pokemon in pokemon_names %}
                 <option value="{{ pokemon }}" data-image="{{ pokemon_dict[pokemon]['image_path'] }}">{{ pokemon }}</option>
             {% endfor %}
         </select>
