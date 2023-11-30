@@ -8,20 +8,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Prediction</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
 </head>
-<body>
-    <h1>Select a Pokemon</h1>
+<body class="body">
+    <h1 class="font">Is your Pokémon legendary?</h1>
 
     <form method="post" action="/predict">
-        <label for="pokemon">Choose a Pokemon:</label>
+        <label for="pokemon">Choose a Pokémon:</label>
         <select name="pokemon" id="pokemon" onchange="updateImage()">
             {% for pokemon in pokemon_names %}
                 <option value="{{ pokemon }}" data-image="{{ pokemon_dict[pokemon]['image_path'] }}">{{ pokemon }}</option>
             {% endfor %}
         </select>
-
         <br>
-
         <br>
         <button type="submit">Predict</button>
     </form>
