@@ -148,7 +148,7 @@ def predict():
 
 
     # Update the result HTML template with the prediction
-    return render_template('result.html', prediction=prediction,pokemon_names=pokemon_names, pokemon_dict=pokemon_dict,index = index )
+    return render_template('result.html', prediction=prediction,pokemon_names=pokemon_names, pokemon_dict=pokemon_dict,index = index, pokemon=selected_pokemon)
     #pokemon_names has all names, pokemon_dict has names, and image path, index is index needed
 
 # Add a route to serve static images
