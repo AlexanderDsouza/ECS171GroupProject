@@ -4,6 +4,9 @@
 
 ## Contributors
 Alex D'Souza
-Catherine CHen
+
+Catherine Chen
+
 Varun Wadha
+
 Shane Kim
