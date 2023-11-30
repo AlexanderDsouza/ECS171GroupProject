@@ -116,7 +116,8 @@ y_pred = svm_cls.predict(X_test_rescaled)
 
 # Evaluate the SVM model
 print("SVM Classification Report:")
-print(classification_report(y_test, y_pred))
+report = classification_report(y_test, y_pred)
+print(report)
 
 
 #creating model
@@ -129,16 +130,12 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     selected_pokemon = request.form['pokemon']
-<<<<<<< Updated upstream
-    selected_pokemon_row = df[df['name'] == selected_pokemon]
-=======
     selected_pokemon_row = pokemon_dataframe[pokemon_dataframe['name'] == selected_pokemon]
 
    
     index = pokemon_dataframe[pokemon_dataframe['name'] == selected_pokemon].index[0]
     print(f"The index of {selected_pokemon} is: {index}")
 
->>>>>>> Stashed changes
 
     selected_pokemon_row = selected_pokemon_row.drop(columns=['id','name', 'rank','evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
 
