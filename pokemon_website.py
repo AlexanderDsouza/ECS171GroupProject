@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, send_from_directory,jsonify
 import pandas as pd
 import os
+import random
+
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
