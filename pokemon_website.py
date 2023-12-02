@@ -53,24 +53,12 @@ for i in range(len(model_dataframe)):
         count = 0
 
         stats = [0, 0, 0, 0, 0, 0]
-        while count != 0:
-            while True:
-                random_index = random.randint(2, 7)
-                if stats[random_index-2] != max_stat_value:
+        for stat_count in range(127):
+            while(True):
+                rand_stat = random.randint(0,5)
+                if stats[rand_stat] < 63: #63 is max evs a pokemon can get per stat
+                    stats[rand_stat] += 1
                     break
-            new_stat_value = random.randint(1, max_stat_value - stats[random_index-2] - count)
-            stats[random_index-2] += new_stat_value
-            count -= new_stat_value
-
-        count = 0
-        while count != 0:
-            while True:
-                random_index = random.randint(2, 7)
-                if stats[random_index-2] != max_stat_value:
-                    break
-            new_stat_value = random.randint(1, max_stat_value - stats[random_index-2] - count)
-            stats[random_index-2] += new_stat_value
-            count -= new_stat_value
 
         for j in range(6):
             new_pokemon[j+2] += stats[j]
