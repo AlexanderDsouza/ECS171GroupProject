@@ -2,7 +2,7 @@
 ## Pokemon Rank Detector
 
 ### Getting Started
-To run the webiste, first run the development server:
+To run the website, first run the development server:
 ```
 flask --app pokemon_website run -p 3000
 ```
