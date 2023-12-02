@@ -10,7 +10,7 @@ Then, open http://localhost:3000 with your browser to see the result.
 ## Introduction
 Pokémon is one of the most popular franchises in the world, with various console games, mobile apps, and a very passionate trading card collecting community. There are over 8 million daily Pokémon Go players, over 480 million lifetime console game sales, and over 3.7 billion pokemon cards sold in the 2020-2021 fiscal year. The biggest Pokémon tournament is the Pokémon World Championship with over 110,000 USD in prize money, so every advantage a player can get is extremely valuable. A big advantage that players can get is being able to categorize Pokémon with regards to their strength level.
 
-Some reasons this is beneficial to players is that:
+Some reasons this is beneficial to players are that:
 1. Accurately measure the overall strength of a team and allow players to strategically choose their Pokémon teams at tournaments
 2. Efficiently determine which Pokémon to train more based on Effort Values (EVs)
 3. Predict opponent's moves during battles
