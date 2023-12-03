@@ -38,22 +38,22 @@ model_dataframe = model_dataframe.replace("mythical", "legendary")
 model_dataframe = model_dataframe.replace("baby", "ordinary")
 
 big_pokemon_data = []
-max_stat_value = 63
 
 for i in range(len(model_dataframe)):
     # Create a copy of the original datapoint
     if model_dataframe.loc[i]['rank'] == 'legendary':
-        k = 100
+        k = 100 #artificially putting more legendary pokemon in our dataset so we can classify properly
     else:
         k = 10
     for z in range(k):
         new_pokemon = model_dataframe.loc[i].copy()  # Use the copy method to avoid SettingWithCopyWarning
 
         # Get the randomly chosen datapoint
-        tot = 127
-        maxx = 63
         count = 0
 
+        #randomly distributing evs, each pokemon has 127 extra stats which make each species unique.
+        #ie pikachu1 will be different than pikachu2 because it has a different stat spread because of evs.
+        #so we do this in our code to create our dataset to be as large or as small as we want
         stats = [0, 0, 0, 0, 0, 0]
         for stat_count in range(127):
             while(True):
@@ -124,12 +124,30 @@ def predict():
 
    
     index = pokemon_dataframe[pokemon_dataframe['name'] == selected_pokemon].index[0]
-    print(f"The index of {selected_pokemon} is: {index}")
+   # print(f"The index of {selected_pokemon} is: {index}")
 
 
     selected_pokemon_row = selected_pokemon_row.drop(columns=['id','name', 'rank','evolves_from', 'generation','type1', 'type2', 'abilities', 'desc'])
 
     # Scale the features
+    #randomly distributing evs, each pokemon has 127 extra stats which make each species unique.
+    #ie pikachu1 will be different than pikachu2 because it has a different stat spread because of evs.
+    #so we do this in our code to create our dataset to be as large or as small as we want
+    stats = [0, 0, 0, 0, 0, 0]
+    for stat_count in range(127):
+            while(True):
+                rand_stat = random.randint(0,5)
+                if stats[rand_stat] < 63: #63 is max evs a pokemon can get per stat
+                    stats[rand_stat] += 1
+                    break
+    #randomly distributing evs, for each unique pokemon so it is consistent with our data. 
+    selected_pokemon_row['hp'] += stats[0]
+    selected_pokemon_row['atk'] += stats[1]
+    selected_pokemon_row['def'] += stats[2]
+    selected_pokemon_row['spatk'] += stats[3]
+    selected_pokemon_row['spdef'] += stats[4]
+    selected_pokemon_row['speed'] += stats[5]
+
 
     # Make predictions using the model
     scaled_features = scaler.transform(selected_pokemon_row)
