@@ -1,4 +1,4 @@
-# ECS 171 Final Project: Pokemon Rank Detector
+# ECS 171 Final Project: Pokemon Rank Classifier
 
 ## Getting Started
 To run the website, first run the development server:
@@ -46,3 +46,5 @@ Catherine Chen
 Varun Wadha
 
 Shane Kim
+
+**Group 8**
